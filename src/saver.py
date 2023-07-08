@@ -5,14 +5,6 @@ from abc import ABC, abstractmethod
 class Saver(ABC):
 
     @abstractmethod
-    def open_file(self):
-        pass
-
-    @abstractmethod
-    def close_file(self):
-        pass
-
-    @abstractmethod
     def get_vacancies(self):
         pass
 
@@ -29,18 +21,10 @@ class JSONSaver(Saver):
 
     def __init__(self, path='vacancies.json'):
         self.path = path
-        self.file = self.open_file()
-
-    def open_file(self):
-        return open(self.path, 'w+', encoding='utf-8')
-
-    def close_file(self):
-        if self.file is not None:
-            self.file.close()
-            self.file = None
 
     def get_vacancies(self):
-        file_raw = self.file.read()
+        with open(self.path, 'r', encoding='utf-8') as file:
+            file_raw = file.read()
         if file_raw:
             return json.loads(file_raw)
         else:
@@ -52,4 +36,3 @@ class JSONSaver(Saver):
     def add_vacancies(self, *args):
         vacancies_from_file = self.get_vacancies()
         vacancies_from_file.extend(*args)
-        json.dump(vacancies_from_file, self.file)
