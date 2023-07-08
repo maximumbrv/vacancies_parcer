@@ -36,6 +36,37 @@ class Vacancy:
             if snippet:
                 if snippet['requirement'] is None:
                     del snippet['requirement']
+                else:
+                    snippet['requirement'] = snippet['requirement'].replace('<highlighttext>', '')
+                    snippet['requirement'] = snippet['requirement'].replace('</highlighttext>', '')
+                if snippet['responsibility'] is None:
+                    del snippet['responsibility']
+                else:
+                    snippet['responsibility'] = snippet['responsibility'].replace('<highlighttext>', '')
+                    snippet['responsibility'] = snippet['responsibility'].replace('</highlighttext>', '')
+                description = '\n'.join(snippet.values())
+            else:
+                description = None
+
+            platform = 'hh'
+
+            cls.vacancies.append(cls(name, url, salary, description, platform))
+
+    @classmethod
+    def instantiate_from_sj_list(cls, vacancies_list):
+        for vacancy in vacancies_list:
+            name = vacancy['name']
+            url = vacancy['url']
+
+            if vacancy['salary']:
+                salary = {'from': vacancy['salary']['from'], 'to': vacancy['salary']['to']}
+            else:
+                salary = None
+
+            snippet = vacancy['snippet']
+            if snippet:
+                if snippet['requirement'] is None:
+                    del snippet['requirement']
                 if snippet['responsibility'] is None:
                     del snippet['responsibility']
                 description = '\n'.join(snippet.values())
@@ -45,5 +76,3 @@ class Vacancy:
             platform = 'hh'
 
             cls.vacancies.append(cls(name, url, salary, description, platform))
-
-
