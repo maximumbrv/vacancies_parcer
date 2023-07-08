@@ -40,7 +40,8 @@ class JSONSaver(Saver):
         self.path = path
 
     def __enter__(self):
-        self.open_file()
+        if self.file is not None:
+            self.open_file()
         return self.file
 
     def __exit__(self):
