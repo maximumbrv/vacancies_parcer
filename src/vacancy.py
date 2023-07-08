@@ -27,13 +27,15 @@ class Vacancy:
             name = vacancy['name']
             url = vacancy['url']
 
-            if vacancy['salary']:
-                salary = {'from': vacancy['salary']['from'], 'to': vacancy['salary']['to']}
-            else:
-                salary = None
+            salary = {'from': None, 'to': None}
+            if vacancy['salary'] is not None:
+                if vacancy['salary']['to'] is not None:
+                    salary['to'] = vacancy['salary']['to']
+                if vacancy['salary']['from'] is not None:
+                    salary['from'] = vacancy['salary']['from']
 
             snippet = vacancy['snippet']
-            if snippet:
+            if snippet is not None:
                 if snippet['requirement'] is None:
                     del snippet['requirement']
                 else:
@@ -48,7 +50,7 @@ class Vacancy:
             else:
                 description = None
 
-            platform = 'hh'
+            platform = 'HeadHunter'
 
             cls.vacancies.append(cls(name, url, salary, description, platform))
 
@@ -69,6 +71,6 @@ class Vacancy:
             else:
                 description = None
 
-            platform = 'sj'
+            platform = 'SuperJob'
 
             cls.vacancies.append(cls(name, url, salary, description, platform))
