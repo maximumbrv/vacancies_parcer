@@ -150,6 +150,7 @@ class Vacancy:
             })
         return vacancies_list
 
-    def clear(self):
+    @staticmethod
+    def clear():
         Vacancy.vacancies.clear()
         Vacancy.ids.clear()
