@@ -1,7 +1,7 @@
 import requests
 import json
 from abc import ABC, abstractmethod
-from api_key import SUPERJOB_KEY
+from src.api_key import SUPERJOB_KEY
 
 
 class API(ABC):
