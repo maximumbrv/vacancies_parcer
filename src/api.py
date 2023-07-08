@@ -15,10 +15,14 @@ class API(ABC):
 
 class HeadHunterAPI(API):
     def __init__(self):
-        pass
+        self.vacancies = []
 
-    def get_vacancies(self, keyword):
-        pass
+    def get_vacancies(self, keyword=''):
+        params = {'area': 113, 'text': keyword, 'per_page': 20}
+        response = requests.get('https://api.hh.ru/vacancies', params)
+        print(response.status_code)
+        vacancies_list = response.json()['items']
+        self.vacancies = vacancies_list
 
     def to_list(self):
         pass
