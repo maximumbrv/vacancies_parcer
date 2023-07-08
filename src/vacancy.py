@@ -65,6 +65,8 @@ class Vacancy:
                 salary['from'] = vacancy['payment_from']
             if vacancy['payment_to']:
                 salary['to'] = vacancy['payment_to']
+            if salary['from'] is None and salary['to'] is None:
+                salary = None
 
             if vacancy['candidat']:
                 description = vacancy['candidat']
