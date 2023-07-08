@@ -1,7 +1,11 @@
 class Vacancy:
     vacancies = []
+    ids = set()
 
-    def __init__(self, name, url, salary, description, platform=None):
+    def __init__(self, id, name, url, salary, description, platform=None):
+        if id in Vacancy.ids:
+            raise Exception('vacancy already in the list')
+        self.id = id
         self.name = name
         self.url = url
         self.salary = salary
@@ -54,6 +58,9 @@ class Vacancy:
     @classmethod
     def instantiate_from_hh_list(cls, vacancies_list):
         for vacancy in vacancies_list:
+            id = 'hh' + vacancy['id']
+            if id in cls.ids:
+                return None
             name = vacancy['name']
             url = vacancy['url']
 
@@ -82,11 +89,14 @@ class Vacancy:
 
             platform = 'HeadHunter'
 
-            cls.vacancies.append(cls(name, url, salary, description, platform))
+            cls.vacancies.append(cls(id, name, url, salary, description, platform))
 
     @classmethod
     def instantiate_from_sj_list(cls, vacancies_list):
         for vacancy in vacancies_list:
+            id = 'sj' + vacancy['id']
+            if id in cls.ids:
+                return None
             name = vacancy['profession']
             url = vacancy['link']
 
@@ -105,4 +115,4 @@ class Vacancy:
 
             platform = 'SuperJob'
 
-            cls.vacancies.append(cls(name, url, salary, description, platform))
+            cls.vacancies.append(cls(id, name, url, salary, description, platform))
