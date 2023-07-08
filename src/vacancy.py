@@ -120,6 +120,21 @@ class Vacancy:
             cls.ids.add(id)
 
     @classmethod
+    def instantiate_from_vacancy_list(cls, vacancies):
+        for vacancy in vacancies:
+            id = vacancy['id']
+            name = vacancy['name']
+            url = vacancy['url']
+            salary = vacancy['salary']
+            description = vacancy['description']
+            platform = vacancy['platform']
+            cls.vacancies.append(cls(id, name, url, salary, description, platform))
+            cls.ids.add(id)
+
+
+
+
+    @classmethod
     def vacancies_to_list(cls):
         vacancies_list = []
         for vacancy in cls.vacancies:
