@@ -24,6 +24,33 @@ class Vacancy:
     def are_comparable(self, other):
         return self.salary['from'] is not None and other.salary['from'] is not None
 
+    def __lt__(self, other):
+        if self.are_comparable(other):
+            return self.salary['from'] < other.salary['from']
+        else:
+            raise ValueError('items not comparable')
+
+    def __gt__(self, other):
+        if self.are_comparable(other):
+            return self.salary['from'] > other.salary['from']
+        else:
+            raise ValueError('items not comparable')
+
+    def __ge__(self, other):
+        return not self.__lt__(other)
+
+    def __le__(self, other):
+        return not self.__gt__(other)
+
+    def __eq__(self, other):
+        if self.are_comparable(other):
+            return self.salary['from'] == other.salary['from']
+        else:
+            raise ValueError('items not comparable')
+
+    def __neq__(self, other):
+        return not self.__eq__(other)
+
     @classmethod
     def instantiate_from_hh_list(cls, vacancies_list):
         for vacancy in vacancies_list:
