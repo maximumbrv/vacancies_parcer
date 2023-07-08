@@ -44,15 +44,15 @@ class JSONSaver(Saver):
         return self.file
 
     def __exit__(self):
-        self.file.close()
-        self.file = None
+        self.close_file()
 
     def open_file(self):
-        self.file = open(self.path, 'a', encoding='utf-8')
+        self.file = open(self.path, 'w', encoding='utf-8')
 
     def close_file(self):
         if self.file is not None:
             self.file.close()
+            self.file = None
 
     def get_vacancies(self):
         pass
