@@ -132,3 +132,7 @@ class Vacancy:
                 'platform': vacancy.platform
             })
         return vacancies_list
+
+    def clear(self):
+        Vacancy.vacancies.clear()
+        Vacancy.ids.clear()
