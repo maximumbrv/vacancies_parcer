@@ -21,6 +21,10 @@ class Vacancy:
     def __str__(self):
         return self.name
 
+    @staticmethod
+    def are_comparable(first, second):
+        return first.salary['from'] is not None and second.salary['from'] is not None
+
     @classmethod
     def instantiate_from_hh_list(cls, vacancies_list):
         for vacancy in vacancies_list:
