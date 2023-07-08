@@ -9,6 +9,15 @@ class Vacancy:
         self.platform = platform
         self.vacancies.append(self)
 
+    def __repr__(self):
+        representation = 'Vacancy(\n'
+        representation += f'\tname = {self.name},\n'
+        representation += f'\turl = {self.url},\n'
+        representation += f'\tsalary = {self.salary},\n'
+        representation += f'\tdescription = {self.description},\n'
+        representation += f'\tplatform = {self.platform}\n)'
+        return representation
+
     @classmethod
     def instantiate_from_hh_list(cls, vacancies_list):
         for vacancy in vacancies_list:
