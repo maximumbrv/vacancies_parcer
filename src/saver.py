@@ -32,7 +32,12 @@ class JSONSaver(Saver):
             return []
 
     def get_vacancies_by_keyword(self, keyword):
-        pass
+        vacancies_from_file = self.get_vacancies()
+        filtered_vacancies = []
+        for vacancy in vacancies_from_file:
+            if keyword in vacancy['name'] or keyword in vacancy['description']:
+                filtered_vacancies.append(vacancy)
+        return filtered_vacancies
 
     def add_vacancies(self, *args):
         vacancies_from_file = self.get_vacancies()
