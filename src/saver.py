@@ -28,12 +28,11 @@ class Saver(ABC):
 class JSONSaver(Saver):
 
     def __init__(self, path='vacancies.json'):
-        self.file = None
+        self.file = self.open_file()
         self.open_file()
-        self.path = path
 
     def open_file(self):
-        self.file = open(self.path, 'w', encoding='utf-8')
+        return open(self.path, 'w', encoding='utf-8')
 
     def close_file(self):
         if self.file is not None:
