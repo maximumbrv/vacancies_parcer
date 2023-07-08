@@ -1,5 +1,4 @@
 import requests
-import json
 from abc import ABC, abstractmethod
 from src.api_key import SUPERJOB_KEY
 
