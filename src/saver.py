@@ -5,14 +5,6 @@ from abc import ABC, abstractmethod
 class Saver(ABC):
 
     @abstractmethod
-    def __enter__(self):
-        pass
-
-    @abstractmethod
-    def __exit__(self):
-        pass
-
-    @abstractmethod
     def open_file(self):
         pass
 
