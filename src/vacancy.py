@@ -55,24 +55,20 @@ class Vacancy:
     @classmethod
     def instantiate_from_sj_list(cls, vacancies_list):
         for vacancy in vacancies_list:
-            name = vacancy['name']
-            url = vacancy['url']
+            name = vacancy['profession']
+            url = vacancy['link']
 
-            if vacancy['salary']:
-                salary = {'from': vacancy['salary']['from'], 'to': vacancy['salary']['to']}
-            else:
-                salary = None
+            salary = {'from': None, 'to': None}
+            if vacancy['payment_from']:
+                salary['from'] = vacancy['payment_from']
+            if vacancy['payment_to']:
+                salary['to'] = vacancy['payment_to']
 
-            snippet = vacancy['snippet']
-            if snippet:
-                if snippet['requirement'] is None:
-                    del snippet['requirement']
-                if snippet['responsibility'] is None:
-                    del snippet['responsibility']
-                description = '\n'.join(snippet.values())
+            if vacancy['candidat']:
+                description = vacancy['candidat']
             else:
                 description = None
 
-            platform = 'hh'
+            platform = 'sj'
 
             cls.vacancies.append(cls(name, url, salary, description, platform))
