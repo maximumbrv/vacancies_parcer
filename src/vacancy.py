@@ -58,7 +58,7 @@ class Vacancy:
     @classmethod
     def instantiate_from_hh_list(cls, vacancies_list):
         for vacancy in vacancies_list:
-            id = 'hh' + vacancy['id']
+            id = 'hh' + str(vacancy['id'])
             if id in cls.ids:
                 return None
             name = vacancy['name']
@@ -94,7 +94,7 @@ class Vacancy:
     @classmethod
     def instantiate_from_sj_list(cls, vacancies_list):
         for vacancy in vacancies_list:
-            id = 'sj' + vacancy['id']
+            id = 'sj' + str(vacancy['id'])
             if id in cls.ids:
                 return None
             name = vacancy['profession']
