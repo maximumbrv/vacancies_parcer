@@ -1,6 +1,7 @@
 import requests
 import json
 from abc import ABC, abstractmethod
+from api_key import SUPERJOB_KEY
 
 
 class API(ABC):
@@ -31,11 +32,16 @@ class HeadHunterAPI(API):
 class SuperJobApi(API):
 
     def __init__(self):
-        pass
+        self.key = SUPERJOB_KEY
+        self.vacancies = []
 
     def get_vacancies(self, keyword):
         pass
 
     def to_list(self):
         pass
+
+
+sj = SuperJobApi()
+sj.get_vacancies('')
 
