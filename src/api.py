@@ -25,4 +25,5 @@ class HeadHunterAPI(API):
         self.vacancies = vacancies_list
 
     def to_list(self):
-        pass
+        return self.vacancies
+
