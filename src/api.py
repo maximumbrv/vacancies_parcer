@@ -16,7 +16,7 @@ class HeadHunterAPI(API):
     def get_vacancies(self, keyword=''):
         params = {'area': 113, 'text': keyword, 'per_page': 20}
         response = requests.get('https://api.hh.ru/vacancies', params=params)
-        print(response.status_code)
+        assert response.status_code == 200, 'Request error'
         vacancies_list = response.json()['items']
         self.vacancies = vacancies_list
 
