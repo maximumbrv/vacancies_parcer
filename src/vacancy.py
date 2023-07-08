@@ -17,6 +17,7 @@ class Vacancy:
 
     def __repr__(self):
         representation = 'Vacancy(\n'
+        representation += f'\tid = {self.id},\n'
         representation += f'\tname = {self.name},\n'
         representation += f'\turl = {self.url},\n'
         representation += f'\tsalary = {self.salary},\n'
@@ -132,9 +133,6 @@ class Vacancy:
             platform = vacancy['platform']
             cls.vacancies.append(cls(id, name, url, salary, description, platform))
             cls.ids.add(id)
-
-
-
 
     @classmethod
     def vacancies_to_list(cls):
