@@ -29,6 +29,7 @@ class JSONSaver(Saver):
 
     def __init__(self, path='vacancies.json'):
         self.file = self.open_file()
+        self.path = path
         self.open_file()
 
     def open_file(self):
