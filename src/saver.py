@@ -13,11 +13,11 @@ class Saver(ABC):
         pass
 
     @abstractmethod
-    def open(self):
+    def open_file(self):
         pass
 
     @abstractmethod
-    def close(self):
+    def close_file(self):
         pass
 
     @abstractmethod
@@ -36,6 +36,7 @@ class Saver(ABC):
 class JSONSaver(Saver):
 
     def __init__(self, path='vacancies.json'):
+        self.file = None
         self.path = path
 
     def __enter__(self):
