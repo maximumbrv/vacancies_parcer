@@ -36,6 +36,18 @@ class Saver(ABC):
 class JSONSaver(Saver):
 
     def __init__(self, path='vacancies.json'):
+        self.path = path
+
+    def __enter__(self):
+        pass
+
+    def __exit__(self):
+        pass
+
+    def open(self):
+        pass
+
+    def close(self):
         pass
 
     def get_vacancies(self):
