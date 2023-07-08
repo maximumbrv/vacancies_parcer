@@ -23,11 +23,12 @@ class JSONSaver(Saver):
         self.path = path
 
     def get_vacancies(self):
-        with open(self.path, 'r', encoding='utf-8') as file:
+        try:
+            file = open(self.path, 'r', encoding='utf-8')
             file_raw = file.read()
-        if file_raw:
+            file.close()
             return json.loads(file_raw)
-        else:
+        except FileNotFoundError:
             return []
 
     def get_vacancies_by_keyword(self, keyword):
@@ -36,3 +37,7 @@ class JSONSaver(Saver):
     def add_vacancies(self, *args):
         vacancies_from_file = self.get_vacancies()
         vacancies_from_file.extend(*args)
+        with open(self.path, 'w', encoding='utf-8') as file:
+            file.truncate(0)
+            json.dump(vacancies_from_file, file)
+
