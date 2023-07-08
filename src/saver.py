@@ -32,7 +32,7 @@ class JSONSaver(Saver):
         self.file = self.open_file()
 
     def open_file(self):
-        return open(self.path, 'a+', encoding='utf-8')
+        return open(self.path, 'w+', encoding='utf-8')
 
     def close_file(self):
         if self.file is not None:
@@ -42,7 +42,7 @@ class JSONSaver(Saver):
     def get_vacancies(self):
         file_raw = self.file.read()
         if file_raw:
-            return json.loads(file_raw).decode()
+            return json.loads(file_raw)
         else:
             return []
 
@@ -51,5 +51,5 @@ class JSONSaver(Saver):
 
     def add_vacancies(self, *args):
         vacancies_from_file = self.get_vacancies()
-        vacancies_from_file.append(args)
+        vacancies_from_file.extend(*args)
         json.dump(vacancies_from_file, self.file)
