@@ -33,6 +33,8 @@ class Vacancy:
                     salary['to'] = vacancy['salary']['to']
                 if vacancy['salary']['from'] is not None:
                     salary['from'] = vacancy['salary']['from']
+            if salary['from'] is None and salary['to'] is None:
+                salary = None
 
             snippet = vacancy['snippet']
             if snippet is not None:
