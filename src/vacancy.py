@@ -90,6 +90,7 @@ class Vacancy:
             platform = 'HeadHunter'
 
             cls.vacancies.append(cls(id, name, url, salary, description, platform))
+            cls.ids.add(id)
 
     @classmethod
     def instantiate_from_sj_list(cls, vacancies_list):
@@ -116,3 +117,4 @@ class Vacancy:
             platform = 'SuperJob'
 
             cls.vacancies.append(cls(id, name, url, salary, description, platform))
+            cls.ids.add(id)
