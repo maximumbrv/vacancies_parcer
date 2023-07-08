@@ -12,6 +12,7 @@ class Vacancy:
         self.description = description
         self.platform = platform
         self.vacancies.append(self)
+        self.ids.add(id)
 
     def __repr__(self):
         representation = 'Vacancy(\n'
