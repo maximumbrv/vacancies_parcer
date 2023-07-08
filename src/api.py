@@ -36,7 +36,10 @@ class SuperJobApi(API):
         self.vacancies = []
 
     def get_vacancies(self, keyword):
-        pass
+        headers = {'X-Api-App-Id': self.key}
+        response = requests.get('https://api.superjob.ru/2.0/vacancies/', headers=headers)
+        print(response.status_code)
+        self.vacancies = response.json()['objects']
 
     def to_list(self):
         pass
