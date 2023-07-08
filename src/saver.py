@@ -37,15 +37,8 @@ class JSONSaver(Saver):
 
     def __init__(self, path='vacancies.json'):
         self.file = None
+        self.open_file()
         self.path = path
-
-    def __enter__(self):
-        if self.file is not None:
-            self.open_file()
-        return self.file
-
-    def __exit__(self):
-        self.close_file()
 
     def open_file(self):
         self.file = open(self.path, 'w', encoding='utf-8')
