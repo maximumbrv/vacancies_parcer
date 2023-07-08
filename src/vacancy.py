@@ -18,6 +18,9 @@ class Vacancy:
         representation += f'\tplatform = {self.platform}\n)'
         return representation
 
+    def __str__(self):
+        return self.name
+
     @classmethod
     def instantiate_from_hh_list(cls, vacancies_list):
         for vacancy in vacancies_list:
