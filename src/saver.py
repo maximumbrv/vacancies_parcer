@@ -61,4 +61,5 @@ class JSONSaver(Saver):
         pass
 
     def add_vacancies(self, *args):
-        pass
+        json_raw = json.dumps(args)
+        self.file.write(json_raw)
