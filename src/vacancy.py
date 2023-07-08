@@ -5,14 +5,15 @@ class Vacancy:
     def __init__(self, id, name, url, salary, description, platform=None):
         if id in Vacancy.ids:
             raise Exception('vacancy already in the list')
-        self.id = id
-        self.name = name
-        self.url = url
-        self.salary = salary
-        self.description = description
-        self.platform = platform
-        self.vacancies.append(self)
-        self.ids.add(id)
+        else:
+            self.id = id
+            self.name = name
+            self.url = url
+            self.salary = salary
+            self.description = description
+            self.platform = platform
+            self.vacancies.append(self)
+            self.ids.add(id)
 
     def __repr__(self):
         representation = 'Vacancy(\n'
