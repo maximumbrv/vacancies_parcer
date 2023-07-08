@@ -37,13 +37,11 @@ class SuperJobApi(API):
 
     def get_vacancies(self, keyword):
         headers = {'X-Api-App-Id': self.key}
-        response = requests.get('https://api.superjob.ru/2.0/vacancies/', headers=headers)
+        params = {'keyword': keyword}
+        response = requests.get('https://api.superjob.ru/2.0/vacancies/', params=params, headers=headers)
         self.vacancies = response.json()['objects']
 
     def to_list(self):
         return self.vacancies
 
-
-sj = SuperJobApi()
-sj.get_vacancies('')
 
