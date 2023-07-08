@@ -21,6 +21,9 @@ class Vacancy:
     def __str__(self):
         return self.name
 
+    def __lt__(self, other):
+
+
     @classmethod
     def instantiate_from_hh_list(cls, vacancies_list):
         for vacancy in vacancies_list:
